@@ -17,6 +17,16 @@
 /* This file is PUBLIC DOMAIN. You are free to cut-and-paste to start your own projects, of any kind */
 "use strict";
 
+//copy the 
+var fs = require('fs'), join = require('path').join
+var optsFile = join(__dirname, 'options.well.js')
+var optsExampleFile = join(__dirname, 'options.example.js')
+
+try {
+  fs.statSync(optsFile)
+} catch (err) {
+  fs.writeFileSync(optsFile, fs.readFileSync(optsExampleFile))
+}
 
 // the easiest way to parse command line arguments
 // see https://github.com/substack/node-optimist
